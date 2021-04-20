@@ -1,6 +1,7 @@
 package com.example.mylist
 
 import android.os.Bundle
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,19 @@ class MainActivity : AppCompatActivity() {
 
         setupViews()
         setupRecyclerView()
+
+        searchView2.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                adapterCountries.filter.filter(query)
+                return true 
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+               adapterCountries.filter.filter(newText)
+                return true
+            }
+
+        })
     }
 
     private fun setupViews() {

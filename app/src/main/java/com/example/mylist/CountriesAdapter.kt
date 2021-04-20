@@ -3,15 +3,18 @@ package com.example.mylist
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mylist.model.Countries
 import kotlin.properties.Delegates
 
-class PaaisesAdapter : RecyclerView.Adapter<PaaisesViewHolder>() {
+class PaaisesAdapter : RecyclerView.Adapter<PaaisesViewHolder>(), Filterable {
+
     var item: List<Countries> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
     val paisitem: List<Countries> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
-    val filterItem: List<Countries> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
+    var filterItem: List<Countries> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaaisesViewHolder {
         return PaaisesViewHolder(
@@ -27,6 +30,36 @@ class PaaisesAdapter : RecyclerView.Adapter<PaaisesViewHolder>() {
         val pais = item[position]
         holder.bind(pais)
     }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charSearch = constraint.toString()
+                filterItem = if (charSearch.isEmpty()) {
+                    paisitem as ArrayList<Countries>
+
+                } else {
+                    val resultList = ArrayList<Countries>()
+                    for (row in paisitem) {
+                        if (row.name.toLowerCase().contains(constraint.toString().toLowerCase())) {
+                            resultList.add(row)
+                        }
+                    }
+                    resultList
+                }
+                val filterResultLis = FilterResults()
+                filterResultLis.values - filterItem
+                return filterResultLis
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                item = results?.values as List<Countries>
+                notifyDataSetChanged()
+            }
+
+        }
+    }
+
 }
 
 class PaaisesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
