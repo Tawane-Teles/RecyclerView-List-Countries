@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     private val adapterCountries = PaaisesAdapter1()
     var listCountries: RecyclerView? = null
+    var search: SearchView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         setupViews()
         setupRecyclerView()
 
-        searchView2.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+        search?.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 adapterCountries.filter.filter(query)
                 return true 
@@ -39,12 +40,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupViews() {
         listCountries = findViewById(R.id.listPaaises)
+        search = findViewById(R.id.searchView2)
     }
 
     private fun setupRecyclerView() {
 
         listCountries?.layoutManager = LinearLayoutManager(this)
         listCountries?.adapter = adapterCountries
+
 
     }
 

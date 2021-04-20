@@ -48,7 +48,7 @@ class PaaisesAdapter : RecyclerView.Adapter<PaaisesViewHolder>(), Filterable {
                     resultList
                 }
                 val filterResultLis = FilterResults()
-                filterResultLis.values - filterItem
+                filterResultLis.values =filterItem
                 return filterResultLis
             }
 
