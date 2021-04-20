@@ -5,10 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mylist.model.Pais
+import com.example.mylist.PaaisesAdapter as PaaisesAdapter1
 
 class MainActivity : AppCompatActivity() {
 
-    private val adapterPais = PaaisesAdapter()
+    private val adapterPais = PaaisesAdapter1()
     var listPaaises: RecyclerView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +27,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
 
-        listPaaises?.layoutManager = LinearLayoutManager("this")
-        listPaaises?. adapter = PaaisesAdapter
+        listPaaises?.layoutManager = LinearLayoutManager (this)
+        listPaaises?. adapter = listPaaises
 
+        }
 }
 }
