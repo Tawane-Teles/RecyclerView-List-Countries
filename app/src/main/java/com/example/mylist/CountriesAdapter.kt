@@ -13,8 +13,8 @@ import kotlin.properties.Delegates
 class PaaisesAdapter : RecyclerView.Adapter<PaaisesViewHolder>(), Filterable {
 
     var item: List<Countries> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
-    val paisitem: List<Countries> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
-    var filterItem: List<Countries> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
+    var paisitem: List<Countries> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
+    var filterItem = ArrayList<Countries>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaaisesViewHolder {
         return PaaisesViewHolder(
@@ -53,8 +53,14 @@ class PaaisesAdapter : RecyclerView.Adapter<PaaisesViewHolder>(), Filterable {
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                item = results?.values as List<Countries>
-                notifyDataSetChanged()
+                try {
+                    item = results?.values as List<Countries>
+                    notifyDataSetChanged()
+                } catch (e: Exception) {
+                    item = paisitem
+                    print(e.message)
+
+                }
             }
 
         }

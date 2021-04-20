@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         val countries: List<Countries> =
             listOf(Countries("Estrelinha"), Countries("Alemanha"), Countries("Argentina"))
         adapterCountries.item = countries
+        adapterCountries.paisitem = countries
 
         setupViews()
         setupRecyclerView()
