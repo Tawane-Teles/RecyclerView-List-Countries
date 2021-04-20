@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
 
         listPaaises?.layoutManager = LinearLayoutManager (this)
-        listPaaises?. adapter = listPaaises
+        listPaaises?. adapter = adapterPais
 
         }
 }
