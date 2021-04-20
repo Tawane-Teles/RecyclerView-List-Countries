@@ -2,6 +2,7 @@ package com.example.mylist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mylist.model.Pais
 
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         val paaises: List<Pais> = listOf(Pais("Estrelinha"), Pais("Alemanha"), Pais("Argentina"))
         adapterPais.item = paaises
 
+        setupViews()
         setupRecyclerView()
     }
 
@@ -23,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     }
     private fun setupRecyclerView() {
         with(listPaaises){
+
+            listPaaises?.layoutManager = LinearLayoutManager ("")
 
         }
     }
