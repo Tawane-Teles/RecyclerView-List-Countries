@@ -9,7 +9,7 @@ import com.example.mylist.model.Pais
 import kotlin.properties.Delegates
 
 class PaaisesAdapter : RecyclerView.Adapter<PaaisesViewHolder>() {
-    val item: List<Pais> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
+    var item: List<Pais> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
     val paisitem: List<Pais> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
     val filterItem: List<Pais> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
 

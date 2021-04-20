@@ -3,6 +3,7 @@ package com.example.mylist
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mylist.model.Pais
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,7 +12,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setupViews()
+        val paaises: List<Pais> = listOf(Pais("Estrelinha"), Pais("Alemanha"), Pais("Argentina"))
+        adapterPais.item = paaises
+
+        setupRecyclerView()
     }
 
     private fun setupViews() {
