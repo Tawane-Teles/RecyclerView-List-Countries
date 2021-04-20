@@ -5,13 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mylist.model.Pais
+import com.example.mylist.model.Countries
 import kotlin.properties.Delegates
 
 class PaaisesAdapter : RecyclerView.Adapter<PaaisesViewHolder>() {
-    var item: List<Pais> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
-    val paisitem: List<Pais> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
-    val filterItem: List<Pais> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
+    var item: List<Countries> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
+    val paisitem: List<Countries> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
+    val filterItem: List<Countries> by Delegates.observable(emptyList()) { _, old, new -> if (old != new) notifyDataSetChanged() }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaaisesViewHolder {
         return PaaisesViewHolder(
@@ -30,7 +30,7 @@ class PaaisesAdapter : RecyclerView.Adapter<PaaisesViewHolder>() {
 }
 
 class PaaisesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    fun bind(item: Pais) {
+    fun bind(item: Countries) {
 
         val text = itemView.findViewById<TextView>(R.id.textView)
         text.text = item.name
