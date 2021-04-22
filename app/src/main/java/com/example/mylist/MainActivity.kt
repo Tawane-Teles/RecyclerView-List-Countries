@@ -17,7 +17,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val countries: List<Countries> =
-            listOf(Countries("Estrelinha"), Countries("Alemanha"), Countries("Argentina"))
+            listOf(
+                Countries(" Emiratos Árabes Unidos", R.drawable.img_arabian),
+                Countries("United States of America", R.drawable.img_bandeiraeua),
+                Countries("France", R.drawable.img_bandeirafrance),
+                Countries("Japan", R.drawable.img_japan),
+                Countries ("Portugal", R.drawable.img_portugal)
+            )
         adapterCountries.item = countries
         adapterCountries.paisitem = countries
 
@@ -27,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         search?.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 adapterCountries.filter.filter(query)
-                return true 
+                return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {

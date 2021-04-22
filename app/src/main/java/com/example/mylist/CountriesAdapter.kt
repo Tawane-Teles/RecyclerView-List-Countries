@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mylist.model.Countries
@@ -74,5 +75,8 @@ class PaaisesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val text = itemView.findViewById<TextView>(R.id.textView)
         text.text = item.name
 
+        val image = itemView.findViewById<ImageView>(R.id.imageViewFlag)
+        image.setImageDrawable(itemView.resources.getDrawable(item.image))
     }
+
 }
